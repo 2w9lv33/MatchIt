@@ -5,9 +5,9 @@ using UnityEngine.UI;
 namespace MatchIt {
 
     public class Match : MonoBehaviour {
-        //new pics
+        //pics compared to gameobjs
         Pics[,] pics = new Pics[8, 8];
-        //images
+        //images (prefab)
         public Image[] images = new Image[3];
         //get prefabs
         public GameObject[] gameObjects = new GameObject[3];
@@ -49,6 +49,7 @@ namespace MatchIt {
                     {
                         if (n == 1 && r != 0)
                         {
+                            //new a pic
                             GameObject prefabInstance = Instantiate(gameObjects[0]);
                             prefabInstance.transform.parent = GameObject.Find("Panel").gameObject.transform;
                             prefabInstance.transform.localPosition = GameObject.Find("Panel").gameObject.transform.localPosition;
@@ -111,9 +112,11 @@ namespace MatchIt {
             if (Input.GetMouseButtonDown(0))
             {
                 //todo
+                //test
                 ray = _CurCamera.ScreenPointToRay(Input.mousePosition);
                 Debug.DrawRay(_CurCamera.transform.position, ray.direction * 100, Color.green, 10);
-                if (Click.ClickOn()!=null)
+
+                if (Click.ClickOn()!=null && Click.ClickOn().alive)
                 {
                     tempPics[hold] = Click.ClickOn();
                     print("row:" + tempPics[hold].row + " col:" + tempPics[hold].col);
@@ -133,9 +136,9 @@ namespace MatchIt {
                     List<int> samerow = CatchSameRow(p1r, p2r);
                     if (MatchStart(samerow, samecol, pics, tempPics[0], tempPics[1]))
                     {
-                        tempPics[0].GetComponent<Pics>().image.GetComponent<Image>().color = Color.white;
+                        tempPics[0].GetComponent<Image>().color = Color.white;
                         tempPics[0].GetComponent<Pics>().alive = false;
-                        tempPics[1].GetComponent<Pics>().image.GetComponent<Image>().color = Color.white;
+                        tempPics[1].GetComponent<Image>().color = Color.white;
                         tempPics[1].GetComponent<Pics>().alive = false;
                     }
                 }

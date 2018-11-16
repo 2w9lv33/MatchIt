@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//test method
 public class Compare : MonoBehaviour {
 
 	// Use this for initialization

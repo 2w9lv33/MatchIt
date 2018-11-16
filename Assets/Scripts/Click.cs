@@ -8,10 +8,14 @@ namespace MatchIt
 {
     public class Click : MonoBehaviour
     {
+        //GraphicRaycaster
         static GraphicRaycaster m_Raycaster;
+        //PointerEventData
         static PointerEventData m_PointerEventData;
+        //EventSystem
         static EventSystem m_EventSystem;
 
+        //return Pics be Clicked
         public static Pics ClickOn()
         {
             if (Input.GetKey(KeyCode.Mouse0))
@@ -30,6 +34,7 @@ namespace MatchIt
                 //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
                 foreach (RaycastResult result in results)
                 {
+                    //return Pics
                     return result.gameObject.GetComponent<Pics>();
                 }
             }
